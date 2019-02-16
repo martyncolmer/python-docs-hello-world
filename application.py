@@ -1,6 +1,8 @@
 from flask import Flask
+import os
+
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello Mart"
+    return "Hello  " + os.getenv('DBONE', "Not Found")
