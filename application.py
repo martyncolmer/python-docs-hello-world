@@ -1,8 +1,12 @@
 from flask import Flask
 import os
 
-app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Hello  " + os.getenv('DBONE', "Not Found")
+def create_app():
+    app = Flask(__name__, instance_relative_config=True)
+
+    @app.route("/")
+    def hello():
+        return "Hello  " + os.getenv('DBONE', "Not Found")
+
+    return app
